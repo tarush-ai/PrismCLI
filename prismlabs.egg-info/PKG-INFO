@@ -1,0 +1,89 @@
+Metadata-Version: 2.4
+Name: prismlabs
+Version: 0.1.0
+Summary: Scientific research CLI — from observation to publication
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: typer>=0.12
+Requires-Dist: rich>=13
+Requires-Dist: openai>=1.30
+Requires-Dist: arxiv>=2.1
+Requires-Dist: pydantic>=2.0
+Requires-Dist: httpx>=0.27
+Requires-Dist: python-dotenv>=1.0
+
+# Prism
+
+**Scientific research CLI — from observation to publication**
+
+Prism is a terminal-based research assistant that guides you through the full scientific process: discovering papers, synthesizing background, defining a research question, running experiments, and generating a structured conclusion.
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+Or install from PyPI (once published):
+
+```bash
+pip install prism-research
+```
+
+## Quick Start
+
+```bash
+# 1. Configure your OpenAI API key
+prism init
+
+# 2. Create a new investigation
+prism investigate new "transformer attention mechanisms"
+
+# 3. Run all phases interactively
+prism go
+
+# — or run phases one at a time —
+prism observe          # Discover papers on arXiv
+prism research         # Deeper literature synthesis
+prism question         # Define your research question
+prism experiment plan  # Generate and run experiments
+prism conclude         # Write up your findings
+```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `prism init` | Interactive setup (API key, profile) |
+| `prism investigate new <topic>` | Create a new investigation |
+| `prism investigate list` | List all investigations |
+| `prism investigate use <id>` | Switch active investigation |
+| `prism investigate status` | Show current investigation details |
+| `prism observe [--limit N]` | Observation phase: discover papers |
+| `prism research` | Research phase: deeper synthesis |
+| `prism question` | Question phase: define research question |
+| `prism experiment plan` | Experiment phase: plan and run experiments |
+| `prism experiment run <id>` | Run a specific experiment |
+| `prism experiment list` | List all experiments |
+| `prism conclude` | Conclusion phase: generate research paper |
+| `prism chat` | AI chat about current investigation |
+| `prism go` | Autopilot: run all remaining phases |
+
+## Requirements
+
+- Python 3.10+
+- OpenAI API key (GPT-4o recommended)
+- Optional: [Codex CLI](https://github.com/openai/codex) for AI-assisted code execution
+
+## Data Storage
+
+All data is stored in `~/.prism/`:
+- `config.json` — API key and user profile
+- `prism.db` — SQLite database of investigations and experiments
+- `investigations/<id>/paper.md` — generated research summaries
+- `investigations/<id>/references.bib` — BibTeX references
+
+## License
+
+MIT
